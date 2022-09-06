@@ -1,4 +1,4 @@
-name: Jacky Zhao
+name: Evan Song
 enableToc: true
 openToc: false
 enableLinkPreview: true
@@ -9,7 +9,7 @@ enableCallouts: true
 enableSPA: true
 enableFooter: true
 enableContextualBacklinks: true
-enableRecentNotes: false
+enableRecentNotes: true
 enableGitHubEdit: true
 GitHubLink: https://github.com/jackyzha0/quartz/tree/hugo/content
 enableSemanticSearch: false
@@ -18,7 +18,7 @@ description:
   Host your second brain and digital garden for free. Quartz features extremely fast full-text search,
   Wikilink support, backlinks, local graph, tags, and link previews.
 page_title:
-  "🪴 Quartz 3.3"
+  "Evan's garden"
 links:
   - link_name: Twitter
     link: https://twitter.com/_jzhao
