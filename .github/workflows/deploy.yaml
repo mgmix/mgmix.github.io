@@ -11,6 +11,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          submodules: true
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
       - name: Build Link Index
