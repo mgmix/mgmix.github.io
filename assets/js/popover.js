@@ -12,7 +12,7 @@ function initPopover(baseURL, useContextualBacklinks) {
     links
       .filter(li => li.dataset.src || (li.dataset.idx && useContextualBacklinks))
       .forEach(li => {
-        let el
+        var el
         if (li.dataset.ctx) {
           const linkDest = content[li.dataset.src]
           const popoverElement = `<div class="popover">
@@ -64,11 +64,6 @@ function initPopover(baseURL, useContextualBacklinks) {
             })
 
             el.classList.add("visible")
-            plausible("Popover Hover", {
-              props: {
-                href: li.dataset.src 
-              }
-            })
           })
           li.addEventListener("mouseout", () => {
             el.classList.remove("visible")

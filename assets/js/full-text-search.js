@@ -35,7 +35,7 @@
   })
 
   registerHandlers((e) => {
-    const term = e.target.value
+    term = e.target.value
     const searchResults = contentIndex.search(term, [
       {
         field: "content",
