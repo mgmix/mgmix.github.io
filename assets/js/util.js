@@ -40,8 +40,8 @@ const removeMarkdown = (
       .replace(/^\s{0,3}>\s?/g, "")
       .replace(/(^|\n)\s{0,3}>\s?/g, "\n\n")
       .replace(/^\s{1,2}\[(.*?)\]: (\S+)( ".*?")?\s*$/g, "")
-      .replace(/([\*_]{1,3})(\S.*?\S{0,1})\1/g, "$2")
-      .replace(/([\*_]{1,3})(\S.*?\S{0,1})\1/g, "$2")
+      .replace(/([\*_]{1,3})(\S.*?\S?)\1/g, "$2")
+      .replace(/([\*_]{1,3})(\S.*?\S?)\1/g, "$2")
       .replace(/(`{3,})(.*?)\1/gm, "$2")
       .replace(/`(.+?)`/g, "$1")
       .replace(/\n{2,}/g, "\n\n")
@@ -65,7 +65,7 @@ const highlight = (content, term) => {
       .split(" ")
       .slice(0, h)
     return (
-      (before.length == h ? `...${before.join(" ")}` : before.join(" ")) +
+      (before.length === h ? `...${before.join(" ")}` : before.join(" ")) +
       `<span class="search-highlight">${term}</span>` +
       after.join(" ")
     )
@@ -117,12 +117,17 @@ const resultToHTML = ({ url, title, content }) => {
 const redir = (id, term) => {
   const shouldTrim = PRODUCTION && SEARCH_ENABLED
   const baseURLPrefix = shouldTrim ? "" : BASE_URL.replace(/\/$/g, "")
-  const urlString = `${baseURLPrefix}${id}#:~:text=${encodeURIComponent(term)}/`
+  const urlString = `${baseURLPrefix}${id}#:~:text=${encodeURIComponent(term)}`
   window.Million.navigate(
     new URL(urlString),
     ".singlePage",
   )
   closeSearch()
+  plausible("Search", {
+    props: {
+      term
+    }
+  })
 }
 
 function openSearch() {
